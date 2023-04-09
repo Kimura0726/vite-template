@@ -1,37 +1,59 @@
-import { useState } from 'react';
-import reactLogo from '@/assets/react.svg';
-import viteLogo from '@/assets/vite.svg';
+import { createTheme } from '@mui/material/styles';
+import styled from '@emotion/styled';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import '@/App.css';
 
-function App(): JSX.Element {
-  const [count, setCount] = useState(0);
+const theme = createTheme();
 
+interface Func {
+  name: string;
+  path: string;
+  description: string;
+}
+
+const funcData: Func[] = [
+  {
+    name: 'Counter',
+    path: '/counter',
+    description: 'カウンターのサンプル'
+  },
+  {
+    name: 'React-Query',
+    path: '/query',
+    description: 'React-Queryを使用したデータ取得のサンプル'
+  }
+];
+
+const CustomCard = styled(Card)({
+  width: '40%',
+  marginBottom: theme.spacing(4)
+});
+
+const CardComp = (func: Func, num: number): JSX.Element => (
+  <CustomCard key={num}>
+    <CardContent>
+      <Typography variant="h5" component="div">
+        {func.name}
+      </Typography>
+      <Typography variant="body2">{func.description}</Typography>
+    </CardContent>
+    <CardActions>
+      <Button size="small" component={Link} href={func.path}>
+        Learn More
+      </Button>
+    </CardActions>
+  </CustomCard>
+);
+
+function App(): JSX.Element {
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button
-          onClick={() => {
-            setCount((count) => count + 1);
-          }}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {funcData.map((item, num) => CardComp(item, num))}
     </div>
   );
 }
