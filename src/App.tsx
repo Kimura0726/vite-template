@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/header';
 import Top from '../src/pages/top';
 import Counter from '../src/pages/counter';
 
 const App = (): JSX.Element => {
   return (
-    <div className="App">
+    <>
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route index element={<Top />} />
@@ -12,7 +14,7 @@ const App = (): JSX.Element => {
           {/* <Route path="react_query" element={<ReactQuery />} /> */}
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 };
 
