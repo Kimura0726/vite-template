@@ -23,14 +23,21 @@ const funcData: Func[] = [
   },
   {
     name: 'React-Query',
-    path: '/query',
+    path: '/react_query',
     description: 'React-Queryを使用したデータ取得のサンプル'
   }
 ];
 
 const CustomCard = styled(Card)({
   width: '40%',
-  marginBottom: theme.spacing(4)
+  marginBottom: theme.spacing(2),
+  // ブレークポイントのサンプル
+  [theme.breakpoints.down('md')]: {
+    backgroundColor: 'skyblue'
+  }
+});
+const Container = styled('div')({
+  marginTop: theme.spacing(2)
 });
 
 const CardComp = (func: Func, num: number): JSX.Element => (
@@ -51,9 +58,7 @@ const CardComp = (func: Func, num: number): JSX.Element => (
 
 const Top = (): JSX.Element => {
   return (
-    <div className="App">
-      {funcData.map((item, num) => CardComp(item, num))}
-    </div>
+    <Container>{funcData.map((item, num) => CardComp(item, num))}</Container>
   );
 };
 
