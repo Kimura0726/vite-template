@@ -1,0 +1,8 @@
+.toolbarClassName_ {
+  display: none;
+}
+.editorClassName_ {
+  border: 1px solid #353535;
+  background-color: #efefef;
+  max-height: 200px;
+}

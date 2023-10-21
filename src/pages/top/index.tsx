@@ -25,6 +25,17 @@ const funcData: Func[] = [
     name: 'React-Query',
     path: '/react_query',
     description: 'React-Queryを使用したデータ取得のサンプル'
+  },
+  {
+    name: 'DraftJs',
+    path: '/draftjs',
+    description: 'Darft.jsを使用したリッチテキストエディタのサンプル'
+  },
+  {
+    name: 'DraftJsRead',
+    path: '/draftjsRead',
+    description:
+      'Darft.jsを使用したリッチテキストエディタのサンプル（読み込み専用）'
   }
 ];
 

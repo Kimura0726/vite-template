@@ -10,5 +10,8 @@ export default defineConfig({
       '~/': `${__dirname}/public/`
     }
   },
-  plugins: [react(), tsconfigPaths()]
+  plugins: [react(), tsconfigPaths()],
+  define: {
+    global: 'window'
+  }
 });
