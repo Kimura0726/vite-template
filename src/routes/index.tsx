@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import { createTheme } from '@mui/material/styles';
 import styled from '@emotion/styled';
 import Card from '@mui/material/Card';
@@ -6,6 +7,10 @@ import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+
+export const Route = createFileRoute('/')({
+  component: Index
+});
 
 const theme = createTheme();
 
@@ -25,17 +30,6 @@ const funcData: Func[] = [
     name: 'React-Query',
     path: '/react_query',
     description: 'React-Queryを使用したデータ取得のサンプル'
-  },
-  {
-    name: 'DraftJs',
-    path: '/draftjs',
-    description: 'Darft.jsを使用したリッチテキストエディタのサンプル'
-  },
-  {
-    name: 'DraftJsRead',
-    path: '/draftjsRead',
-    description:
-      'Darft.jsを使用したリッチテキストエディタのサンプル（読み込み専用）'
   }
 ];
 
@@ -67,10 +61,8 @@ const CardComp = (func: Func, num: number): JSX.Element => (
   </CustomCard>
 );
 
-const Top = (): JSX.Element => {
+function Index() {
   return (
     <Container>{funcData.map((item, num) => CardComp(item, num))}</Container>
   );
-};
-
-export default Top;
+}

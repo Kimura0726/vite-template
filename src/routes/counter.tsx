@@ -1,7 +1,12 @@
+import { createFileRoute } from '@tanstack/react-router';
 import { createTheme } from '@mui/material/styles';
 import styled from '@emotion/styled';
 import { Button, Paper, Typography } from '@mui/material';
-import { useCounterStore } from '../../store/counter';
+import { useCounterStore } from '@/store/counter';
+
+export const Route = createFileRoute('/counter')({
+  component: Index
+});
 
 const theme = createTheme();
 
@@ -63,7 +68,7 @@ const ResetButton = (): JSX.Element => {
   );
 };
 
-const Index = (): JSX.Element => {
+function Index() {
   return (
     <Container>
       <CustomPaper elevation={3}>
@@ -75,5 +80,4 @@ const Index = (): JSX.Element => {
       </CustomPaper>
     </Container>
   );
-};
-export default Index;
+}
