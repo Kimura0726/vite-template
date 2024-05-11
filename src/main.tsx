@@ -3,8 +3,15 @@ import ReactDOM from 'react-dom/client';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
+import { worker } from './mocks/browser';
+
 // import App from './App';
 import './index.css';
+
+// dev環境のみMSWのワーカーを起動
+if (import.meta.env.DEV) {
+  worker.start();
+}
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
@@ -53,7 +60,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        {/* <App /> */}
         <RouterProvider router={router} />
       </QueryClientProvider>
     </ThemeProvider>

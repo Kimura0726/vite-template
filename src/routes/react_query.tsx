@@ -1,24 +1,25 @@
 import { createFileRoute } from '@tanstack/react-router';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import Typography from '@mui/material/Typography';
+import { Typography } from '@mui/material';
 import type { Data } from '@/types/react_query';
+import LoadingCircular from '@/components/feedback/LoadingCircular';
+import { qiitaUrl } from '@/URLs';
 
 export const Route = createFileRoute('/react_query')({
   component: Index
 });
 
 function Index() {
-  const url: string = 'https://qiita.com/api/v2/items';
   const { data, isLoading, isError } = useQuery({
     queryKey: ['qiita'],
-    queryFn: async () => await axios.get(url)
+    queryFn: async () => await axios.get(qiitaUrl)
   });
   if (isLoading) {
-    return <div>isLoading</div>;
+    return LoadingCircular;
   }
   if (isError) {
-    return <div>error</div>;
+    return 'error';
   }
 
   const contents = data?.data.map((item: Data) => {

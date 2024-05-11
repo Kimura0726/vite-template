@@ -1,9 +1,9 @@
-interface Tag {
+export interface Tag {
   name: string;
   versions: object;
 }
 
-interface User {
+export interface User {
   description: string;
   facebook_id: string;
   followees_count: number;
