@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom/client';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
-import { worker } from './mocks/browser';
-
-// import App from './App';
-import './index.css';
-
-// dev環境のみMSWのワーカーを起動
-if (import.meta.env.DEV) {
-  worker.start();
-}
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
+
+async function enableMocking() {
+  // dev環境のみMSWのワーカーを起動
+  if (!import.meta.env.DEV) {
+    return;
+  }
+  const { worker } = await import('./mocks/browser');
+  return worker.start();
+}
 
 // Create a new router instance
 const router = createRouter({ routeTree });
@@ -54,9 +54,10 @@ const theme = createTheme({
   }
 });
 
+// react-query Client
 const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const rootElement = (
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
@@ -65,3 +66,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </ThemeProvider>
   </React.StrictMode>
 );
+
+enableMocking().then(() => {
+  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    rootElement
+  );
+});

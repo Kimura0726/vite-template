@@ -22,6 +22,11 @@ interface Func {
 
 const funcData: Func[] = [
   {
+    name: 'Auth',
+    path: '/login',
+    description: 'ログイン処理のサンプル'
+  },
+  {
     name: 'Counter',
     path: '/counter',
     description: 'カウンターのサンプル'
