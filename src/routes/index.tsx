@@ -22,18 +22,13 @@ interface Func {
 
 const funcData: Func[] = [
   {
-    name: 'Auth',
-    path: '/login',
-    description: 'ログイン処理のサンプル'
-  },
-  {
     name: 'Counter',
-    path: '/counter',
+    path: 'counter',
     description: 'カウンターのサンプル'
   },
   {
     name: 'React-Query',
-    path: '/react_query',
+    path: 'react_query',
     description: 'React-Queryを使用したデータ取得のサンプル'
   }
 ];

@@ -6,7 +6,7 @@ import type { Data } from '@/types/react_query';
 import LoadingCircular from '@/components/feedback/LoadingCircular';
 import { qiitaUrl } from '@/URLs';
 
-export const Route = createFileRoute('/react_query')({
+export const Route = createFileRoute('/_auth/react_query')({
   component: Index
 });
 

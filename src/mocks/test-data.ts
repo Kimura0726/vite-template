@@ -1,4 +1,5 @@
 import type { Data, Tag, User } from '@/types/react_query';
+import type { account } from '@/types/user';
 
 const testTag: Tag[] = [
   {
@@ -49,3 +50,8 @@ export const qiita: Data[] = [
     user: testQiitaUser
   }
 ];
+
+export const testUser: account = {
+  id: 'test',
+  pw: 'P@ssw0rd'
+};
